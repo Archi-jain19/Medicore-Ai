@@ -1,0 +1,2183 @@
+{
+  "generated_at": "2026-11-16T17:08:10.930738+00:00",
+  "k": 4,
+  "benchmark": {
+    "n": 35,
+    "answerable": 30,
+    "unanswerable": 5,
+    "labelling_protocol": "(documented so results can be audited):\n  * Questions were written to cover the platform's scope (definitions, comparisons, thresholds, risk\n    factors, lifestyle, multi-part questions) plus out-of-scope questions that SHOULD be refused.\n  * Candidate reference documents were chosen by the author from the corpus manifest (titles and\n    content), not from retrieval output, to avoid biasing labels toward the retriever.\n  * A candidate is kept only if it exists in the corpus and contains every `must_contain` term\n    (case-insensitive). Dropped candidates are reported.\n  * `key_points` are short facts a correct answer should contain; they are drawn from the reference\n    documents and used for answer-relevance scoring when generation is evaluated."
+  },
+  "knowledge_base": {
+    "documents_indexed": 131,
+    "chunks": 868,
+    "documents_by_source": {
+      "PubMed": 62,
+      "WHO": 16,
+      "CDC": 53
+    },
+    "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+    "built_at": "2026-11-16T17:05:59.861185+00:00"
+  },
+  "ranking_config": {
+    "w_similarity": 0.55,
+    "w_reliability": 0.2,
+    "w_recency": 0.1,
+    "w_clinical": 0.15,
+    "reliability": {
+      "WHO": 1.0,
+      "CDC": 1.0,
+      "PubMed:guideline": 0.95,
+      "PubMed:systematic_review": 0.9,
+      "PubMed:review": 0.75,
+      "PubMed:article": 0.6
+    },
+    "default_reliability": 0.5,
+    "recency_half_life_years": 8.0,
+    "unknown_date_recency": 0.5,
+    "min_similarity": 0.3,
+    "min_best_similarity": 0.38,
+    "simple_k": 4,
+    "complex_k_per_query": 6,
+    "complex_final_k": 8,
+    "candidate_pool": 30,
+    "max_chunks_per_doc": 2
+  },
+  "strategies": {
+    "basic": {
+      "retrieval": {
+        "precision@4": 0.75,
+        "recall@4": 0.6689,
+        "hit@4": 1.0,
+        "mrr": 0.8833,
+        "avg_passages_returned": 4,
+        "precision@returned": 0.75,
+        "recall@returned": 0.6689,
+        "abstention_accuracy_unanswerable": 0.8,
+        "false_abstention_rate_answerable": 0.0,
+        "median_latency_ms": 12.7
+      },
+      "generation": {
+        "measured": false,
+        "reason": "No LLM configured (GEMINI_API_KEY unset) - generation metrics were not computed."
+      },
+      "by_type": {
+        "comparison": 0.5833,
+        "definition": 0.6727,
+        "lab_term": 0.7778,
+        "lifestyle": 0.9,
+        "multi_part": 0.5278,
+        "risk_factors": 0.4111,
+        "symptoms": 0.625,
+        "threshold": 0.75
+      },
+      "questions": [
+        {
+          "id": "q01",
+          "type": "definition",
+          "answerable": true,
+          "sufficient": true,
+          "latency_ms": 19117.0,
+          "retrieved_docs": [
+            "who:diabetes",
+            "pubmed:34708622",
+            "cdc:335185",
+            "cdc:335185"
+          ],
+          "complexity": "simple",
+          "precision": 0.75,
+          "recall": 1.0,
+          "hit": 1.0,
+          "rr": 1.0,
+          "returned": 4,
+          "precision_returned": 0.75,
+          "recall_returned": 1.0
+        },
+        {
+          "id": "q02",
+          "type": "comparison",
+          "answerable": true,
+          "sufficient": true,
+          "latency_ms": 56.7,
+          "retrieved_docs": [
+            "who:dyslipidaemia",
+            "who:dyslipidaemia",
+            "pubmed:31071007",
+            "pubmed:39043480"
+          ],
+          "complexity": "complex",
+          "precision": 0.75,
+          "recall": 0.6666666666666666,
+          "hit": 1.0,
+          "rr": 1.0,
+          "returned": 4,
+          "precision_returned": 0.75,
+          "recall_returned": 0.6666666666666666
+        },
+        {
+          "id": "q03",
+          "type": "definition",
+          "answerable": true,
+          "sufficient": true,
+          "latency_ms": 31.1,
+          "retrieved_docs": [
+            "pubmed:32024986",
+            "pubmed:32024986",
+            "pubmed:33793326",
+            "pubmed:33793326"
+          ],
+          "complexity": "simple",
+          "precision": 1.0,
+          "recall": 0.4,
+          "hit": 1.0,
+          "rr": 1.0,
+          "returned": 4,
+          "precision_returned": 1.0,
+          "recall_returned": 0.4
+        },
+        {
+          "id": "q04",
+          "type": "threshold",
+          "answerable": true,
+          "sufficient": true,
+          "latency_ms": 28.0,
+          "retrieved_docs": [
+            "who:hypertension",
+            "pubmed:33793326",
+            "pubmed:32024986",
+            "who:hypertension"
+          ],
+          "complexity": "simple",
+          "precision": 0.5,
+          "recall": 1.0,
+          "hit": 1.0,
+          "rr": 1.0,
+          "returned": 4,
+          "precision_returned": 0.5,
+          "recall_returned": 1.0
+        },
+        {
+          "id": "q05",
+          "type": "lab_term",
+          "answerable": true,
+          "sufficient": true,
+          "latency_ms": 45.4,
+          "retrieved_docs": [
+            "pubmed:37471273",
+            "pubmed:37471273",
+            "pubmed:31296866",
+            "who:diabetes"
+          ],
+          "complexity": "simple",
+          "precision": 0.5,
+          "recall": 1.0,
+          "hit": 1.0,
+          "rr": 1.0,
+          "returned": 4,
+          "precision_returned": 0.5,
+          "recall_returned": 1.0
+        },
+        {
+          "id": "q06",
+          "type": "definition",
+          "answerable": true,
+          "sufficient": true,
+          "latency_ms": 26.7,
+          "retrieved_docs": [
+            "who:anaemia",
+            "who:anaemia",
+            "who:anaemia",
+            "who:anaemia"
+          ],
+          "complexity": "simple",
+          "precision": 1.0,
+          "recall": 1.0,
+          "hit": 1.0,
+          "rr": 1.0,
+          "returned": 4,
+          "precision_returned": 1.0,
+          "recall_returned": 1.0
+        },
+        {
+          "id": "q07",
+          "type": "risk_factors",
+          "answerable": true,
+          "sufficient": true,
+          "latency_ms": 18.6,
+          "retrieved_docs": [
+            "who:anaemia",
+            "who:anaemia",
+            "pubmed:41525691",
+            "cdc:298494"
+          ],
+          "complexity": "simple",
+          "precision": 0.75,
+          "recall": 0.3333333333333333,
+          "hit": 1.0,
+          "rr": 1.0,
+          "returned": 4,
+          "precision_returned": 0.75,
+          "recall_returned": 0.3333333333333333
+        },
+        {
+          "id": "q08",
+          "type": "definition",
+          "answerable": true,
+          "sufficient": true,
+          "latency_ms": 14.4,
+          "retrieved_docs": [
+            "cdc:416309",
+            "who:diabetes",
+            "who:diabetes",
+            "cdc:416309"
+          ],
+          "complexity": "simple",
+          "precision": 0.5,
+          "recall": 0.3333333333333333,
+          "hit": 1.0,
+          "rr": 1.0,
+          "returned": 4,
+          "precision_returned": 0.5,
+          "recall_returned": 0.3333333333333333
+        },
+        {
+          "id": "q09",
+          "type": "risk_factors",
+          "answerable": true,
+          "sufficient": true,
+          "latency_ms": 12.7,
+          "retrieved_docs": [
+            "cdc:281796",
+            "cdc:419813",
+            "who:diabetes",
+            "cdc:281798"
+          ],
+          "complexity": "simple",
+          "precision": 0.5,
+          "recall": 0.4,
+          "hit": 1.0,
+          "rr": 0.3333333333333333,
+          "returned": 4,
+          "precision_returned": 0.5,
+          "recall_returned": 0.4
+        },
+        {
+          "id": "q10",
+          "type": "definition",
+          "answerable": true,
+          "sufficient": true,
+          "latency_ms": 11.3,
+          "retrieved_docs": [
+            "pubmed:31573641",
+            "pubmed:39885176",
+            "who:kidney-disease",
+            "pubmed:41314225"
+          ],
+          "complexity": "simple",
+          "precision": 1.0,
+          "recall": 0.5,
+          "hit": 1.0,
+          "rr": 1.0,
+          "returned": 4,
+          "precision_returned": 1.0,
+          "recall_returned": 0.5
+        },
+        {
+          "id": "q11",
+          "type": "symptoms",
+          "answerable": true,
+          "sufficient": true,
+          "latency_ms": 11.2,
+          "retrieved_docs": [
+            "who:cardiovascular-diseases-(cvds)",
+            "cdc:125431",
+            "cdc:125431",
+            "who:cardiovascular-diseases-(cvds)"
+          ],
+          "complexity": "simple",
+          "precision": 0.5,
+          "recall": 0.25,
+          "hit": 1.0,
+          "rr": 0.5,
+          "returned": 4,
+          "precision_returned": 0.5,
+          "recall_returned": 0.25
+        },
+        {
+          "id": "q12",
+          "type": "symptoms",
+          "answerable": true,
+          "sufficient": true,
+          "latency_ms": 10.5,
+          "retrieved_docs": [
+            "who:heart-attack",
+            "who:cardiovascular-diseases-(cvds)",
+            "who:heart-attack",
+            "who:cardiovascular-diseases-(cvds)"
+          ],
+          "complexity": "simple",
+          "precision": 1.0,
+          "recall": 1.0,
+          "hit": 1.0,
+          "rr": 1.0,
+          "returned": 4,
+          "precision_returned": 1.0,
+          "recall_returned": 1.0
+        },
+        {
+          "id": "q13",
+          "type": "lifestyle",
+          "answerable": true,
+          "sufficient": true,
+          "latency_ms": 10.1,
+          "retrieved_docs": [
+            "cdc:762355",
+            "who:physical-activity",
+            "who:physical-activity",
+            "cdc:762355"
+          ],
+          "complexity": "simple",
+          "precision": 0.5,
+          "recall": 1.0,
+          "hit": 1.0,
+          "rr": 0.5,
+          "returned": 4,
+          "precision_returned": 0.5,
+          "recall_returned": 1.0
+        },
+        {
+          "id": "q14",
+          "type": "threshold",
+          "answerable": true,
+          "sufficient": true,
+          "latency_ms": 12.4,
+          "retrieved_docs": [
+            "who:obesity-and-overweight",
+            "who:malnutrition",
+            "cdc:759627",
+            "cdc:418404"
+          ],
+          "complexity": "simple",
+          "precision": 0.25,
+          "recall": 0.5,
+          "hit": 1.0,
+          "rr": 1.0,
+          "returned": 4,
+          "precision_returned": 0.25,
+          "recall_returned": 0.5
+        },
+        {
+          "id": "q15",
+          "type": "lifestyle",
+          "answerable": true,
+          "sufficient": true,
+          "latency_ms": 11.1,
+          "retrieved_docs": [
+            "cdc:422954",
+            "who:healthy-diet",
+            "cdc:422954",
+            "cdc:222842"
+          ],
+          "complexity": "simple",
+          "precision": 1.0,
+          "recall": 0.6,
+          "hit": 1.0,
+          "rr": 1.0,
+          "returned": 4,
+          "precision_returned": 1.0,
+          "recall_returned": 0.6
+        },
+        {
+          "id": "q16",
+          "type": "lifestyle",
+          "answerable": true,
+          "sufficient": true,
+          "latency_ms": 11.0,
+          "retrieved_docs": [
+            "cdc:749503",
+            "cdc:220643",
+            "who:healthy-diet",
+            "who:healthy-diet"
+          ],
+          "complexity": "simple",
+          "precision": 0.5,
+          "recall": 1.0,
+          "hit": 1.0,
+          "rr": 0.3333333333333333,
+          "returned": 4,
+          "precision_returned": 0.5,
+          "recall_returned": 1.0
+        },
+        {
+          "id": "q17",
+          "type": "lab_term",
+          "answerable": true,
+          "sufficient": true,
+          "latency_ms": 10.9,
+          "retrieved_docs": [
+            "pubmed:38676447",
+            "pubmed:38828931",
+            "pubmed:38828931",
+            "pubmed:37266579"
+          ],
+          "complexity": "simple",
+          "precision": 0.5,
+          "recall": 0.3333333333333333,
+          "hit": 1.0,
+          "rr": 0.5,
+          "returned": 4,
+          "precision_returned": 0.5,
+          "recall_returned": 0.3333333333333333
+        },
+        {
+          "id": "q18",
+          "type": "definition",
+          "answerable": true,
+          "sufficient": true,
+          "latency_ms": 11.7,
+          "retrieved_docs": [
+            "who:diabetes",
+            "who:diabetes",
+            "pubmed:31296866",
+            "pubmed:35613728"
+          ],
+          "complexity": "simple",
+          "precision": 0.5,
+          "recall": 1.0,
+          "hit": 1.0,
+          "rr": 0.3333333333333333,
+          "returned": 4,
+          "precision_returned": 0.5,
+          "recall_returned": 1.0
+        },
+        {
+          "id": "q19",
+          "type": "definition",
+          "answerable": true,
+          "sufficient": true,
+          "latency_ms": 13.7,
+          "retrieved_docs": [
+            "who:diabetes",
+            "cdc:419813",
+            "cdc:335185",
+            "who:diabetes"
+          ],
+          "complexity": "simple",
+          "precision": 0.75,
+          "recall": 0.6666666666666666,
+          "hit": 1.0,
+          "rr": 1.0,
+          "returned": 4,
+          "precision_returned": 0.75,
+          "recall_returned": 0.6666666666666666
+        },
+        {
+          "id": "q20",
+          "type": "definition",
+          "answerable": true,
+          "sufficient": true,
+          "latency_ms": 12.5,
+          "retrieved_docs": [
+            "who:cardiovascular-diseases-(cvds)",
+            "who:heart-attack",
+            "who:cardiovascular-diseases-(cvds)",
+            "pubmed:33610690"
+          ],
+          "complexity": "simple",
+          "precision": 0.75,
+          "recall": 0.6666666666666666,
+          "hit": 1.0,
+          "rr": 1.0,
+          "returned": 4,
+          "precision_returned": 0.75,
+          "recall_returned": 0.6666666666666666
+        },
+        {
+          "id": "q21",
+          "type": "definition",
+          "answerable": true,
+          "sufficient": true,
+          "latency_ms": 11.0,
+          "retrieved_docs": [
+            "who:pre-eclampsia",
+            "who:pre-eclampsia",
+            "who:pre-eclampsia",
+            "who:pre-eclampsia"
+          ],
+          "complexity": "simple",
+          "precision": 1.0,
+          "recall": 0.5,
+          "hit": 1.0,
+          "rr": 1.0,
+          "returned": 4,
+          "precision_returned": 1.0,
+          "recall_returned": 0.5
+        },
+        {
+          "id": "q22",
+          "type": "definition",
+          "answerable": true,
+          "sufficient": true,
+          "latency_ms": 11.2,
+          "retrieved_docs": [
+            "who:dyslipidaemia",
+            "who:dyslipidaemia",
+            "who:dyslipidaemia",
+            "who:dyslipidaemia"
+          ],
+          "complexity": "simple",
+          "precision": 1.0,
+          "recall": 0.3333333333333333,
+          "hit": 1.0,
+          "rr": 1.0,
+          "returned": 4,
+          "precision_returned": 1.0,
+          "recall_returned": 0.3333333333333333
+        },
+        {
+          "id": "q23",
+          "type": "lifestyle",
+          "answerable": true,
+          "sufficient": true,
+          "latency_ms": 12.7,
+          "retrieved_docs": [
+            "who:dyslipidaemia",
+            "cdc:229679",
+            "cdc:229679",
+            "cdc:229679"
+          ],
+          "complexity": "simple",
+          "precision": 1.0,
+          "recall": 1.0,
+          "hit": 1.0,
+          "rr": 1.0,
+          "returned": 4,
+          "precision_returned": 1.0,
+          "recall_returned": 1.0
+        },
+        {
+          "id": "q24",
+          "type": "definition",
+          "answerable": true,
+          "sufficient": true,
+          "latency_ms": 9.3,
+          "retrieved_docs": [
+            "who:depression",
+            "who:depression",
+            "who:depression",
+            "who:depression"
+          ],
+          "complexity": "simple",
+          "precision": 1.0,
+          "recall": 1.0,
+          "hit": 1.0,
+          "rr": 1.0,
+          "returned": 4,
+          "precision_returned": 1.0,
+          "recall_returned": 1.0
+        },
+        {
+          "id": "q25",
+          "type": "multi_part",
+          "answerable": true,
+          "sufficient": true,
+          "latency_ms": 15.9,
+          "retrieved_docs": [
+            "who:kidney-disease",
+            "who:diabetes",
+            "who:diabetes",
+            "who:kidney-disease"
+          ],
+          "complexity": "complex",
+          "precision": 1.0,
+          "recall": 0.3333333333333333,
+          "hit": 1.0,
+          "rr": 1.0,
+          "returned": 4,
+          "precision_returned": 1.0,
+          "recall_returned": 0.3333333333333333
+        },
+        {
+          "id": "q26",
+          "type": "risk_factors",
+          "answerable": true,
+          "sufficient": true,
+          "latency_ms": 10.2,
+          "retrieved_docs": [
+            "cdc:418404",
+            "cdc:418404",
+            "cdc:418404",
+            "cdc:418404"
+          ],
+          "complexity": "simple",
+          "precision": 1.0,
+          "recall": 0.5,
+          "hit": 1.0,
+          "rr": 1.0,
+          "returned": 4,
+          "precision_returned": 1.0,
+          "recall_returned": 0.5
+        },
+        {
+          "id": "q27",
+          "type": "lab_term",
+          "answerable": true,
+          "sufficient": true,
+          "latency_ms": 13.9,
+          "retrieved_docs": [
+            "who:kidney-disease",
+            "who:kidney-disease",
+            "pubmed:31573641",
+            "pubmed:31573641"
+          ],
+          "complexity": "simple",
+          "precision": 1.0,
+          "recall": 1.0,
+          "hit": 1.0,
+          "rr": 1.0,
+          "returned": 4,
+          "precision_returned": 1.0,
+          "recall_returned": 1.0
+        },
+        {
+          "id": "q28",
+          "type": "multi_part",
+          "answerable": true,
+          "sufficient": true,
+          "latency_ms": 16.2,
+          "retrieved_docs": [
+            "who:noncommunicable-diseases",
+            "who:malnutrition",
+            "who:noncommunicable-diseases",
+            "who:oral-health"
+          ],
+          "complexity": "simple",
+          "precision": 0.5,
+          "recall": 1.0,
+          "hit": 1.0,
+          "rr": 1.0,
+          "returned": 4,
+          "precision_returned": 0.5,
+          "recall_returned": 1.0
+        },
+        {
+          "id": "q29",
+          "type": "multi_part",
+          "answerable": true,
+          "sufficient": true,
+          "latency_ms": 16.8,
+          "retrieved_docs": [
+            "who:diabetes",
+            "who:diabetes",
+            "who:heart-attack",
+            "who:dyslipidaemia"
+          ],
+          "complexity": "complex",
+          "precision": 0.5,
+          "recall": 0.25,
+          "hit": 1.0,
+          "rr": 1.0,
+          "returned": 4,
+          "precision_returned": 0.5,
+          "recall_returned": 0.25
+        },
+        {
+          "id": "q30",
+          "type": "comparison",
+          "answerable": true,
+          "sufficient": true,
+          "latency_ms": 17.0,
+          "retrieved_docs": [
+            "cdc:281798",
+            "who:diabetes",
+            "who:diabetes",
+            "who:physical-activity"
+          ],
+          "complexity": "complex",
+          "precision": 1.0,
+          "recall": 0.5,
+          "hit": 1.0,
+          "rr": 1.0,
+          "returned": 4,
+          "precision_returned": 1.0,
+          "recall_returned": 0.5
+        },
+        {
+          "id": "u01",
+          "type": "unanswerable",
+          "answerable": false,
+          "sufficient": false,
+          "latency_ms": 12.8,
+          "retrieved_docs": [],
+          "complexity": "simple"
+        },
+        {
+          "id": "u02",
+          "type": "unanswerable",
+          "answerable": false,
+          "sufficient": false,
+          "latency_ms": 11.9,
+          "retrieved_docs": [],
+          "complexity": "simple"
+        },
+        {
+          "id": "u03",
+          "type": "unanswerable",
+          "answerable": false,
+          "sufficient": false,
+          "latency_ms": 12.3,
+          "retrieved_docs": [],
+          "complexity": "simple"
+        },
+        {
+          "id": "u04",
+          "type": "unanswerable_medical",
+          "answerable": false,
+          "sufficient": true,
+          "latency_ms": 12.8,
+          "retrieved_docs": [
+            "cdc:760024"
+          ],
+          "complexity": "simple"
+        },
+        {
+          "id": "u05",
+          "type": "unanswerable",
+          "answerable": false,
+          "sufficient": false,
+          "latency_ms": 12.0,
+          "retrieved_docs": [],
+          "complexity": "simple"
+        }
+      ]
+    },
+    "reranked": {
+      "retrieval": {
+        "precision@4": 0.65,
+        "recall@4": 0.6703,
+        "hit@4": 1.0,
+        "mrr": 0.9278,
+        "avg_passages_returned": 3.9333,
+        "precision@returned": 0.6667,
+        "recall@returned": 0.6703,
+        "abstention_accuracy_unanswerable": 0.8,
+        "false_abstention_rate_answerable": 0.0,
+        "median_latency_ms": 13.0
+      },
+      "generation": {
+        "measured": false,
+        "reason": "No LLM configured (GEMINI_API_KEY unset) - generation metrics were not computed."
+      },
+      "by_type": {
+        "comparison": 0.3333,
+        "definition": 0.722,
+        "lab_term": 0.7778,
+        "lifestyle": 0.9,
+        "multi_part": 0.5278,
+        "risk_factors": 0.4111,
+        "symptoms": 0.625,
+        "threshold": 0.75
+      },
+      "questions": [
+        {
+          "id": "q01",
+          "type": "definition",
+          "answerable": true,
+          "sufficient": true,
+          "latency_ms": 13.5,
+          "retrieved_docs": [
+            "who:diabetes",
+            "cdc:335185",
+            "cdc:419813",
+            "cdc:335185"
+          ],
+          "complexity": "simple",
+          "precision": 0.75,
+          "recall": 1.0,
+          "hit": 1.0,
+          "rr": 1.0,
+          "returned": 4,
+          "precision_returned": 0.75,
+          "recall_returned": 1.0
+        },
+        {
+          "id": "q02",
+          "type": "comparison",
+          "answerable": true,
+          "sufficient": true,
+          "latency_ms": 20.2,
+          "retrieved_docs": [
+            "who:dyslipidaemia",
+            "who:dyslipidaemia",
+            "pubmed:33471744",
+            "pubmed:31071007"
+          ],
+          "complexity": "complex",
+          "precision": 0.5,
+          "recall": 0.3333333333333333,
+          "hit": 1.0,
+          "rr": 1.0,
+          "returned": 4,
+          "precision_returned": 0.5,
+          "recall_returned": 0.3333333333333333
+        },
+        {
+          "id": "q03",
+          "type": "definition",
+          "answerable": true,
+          "sufficient": true,
+          "latency_ms": 13.8,
+          "retrieved_docs": [
+            "cdc:229514",
+            "who:hypertension",
+            "cdc:229514",
+            "who:hypertension"
+          ],
+          "complexity": "simple",
+          "precision": 1.0,
+          "recall": 0.4,
+          "hit": 1.0,
+          "rr": 1.0,
+          "returned": 4,
+          "precision_returned": 1.0,
+          "recall_returned": 0.4
+        },
+        {
+          "id": "q04",
+          "type": "threshold",
+          "answerable": true,
+          "sufficient": true,
+          "latency_ms": 14.0,
+          "retrieved_docs": [
+            "who:hypertension",
+            "cdc:229514",
+            "who:hypertension",
+            "cdc:229514"
+          ],
+          "complexity": "simple",
+          "precision": 0.5,
+          "recall": 1.0,
+          "hit": 1.0,
+          "rr": 1.0,
+          "returned": 4,
+          "precision_returned": 0.5,
+          "recall_returned": 1.0
+        },
+        {
+          "id": "q05",
+          "type": "lab_term",
+          "answerable": true,
+          "sufficient": true,
+          "latency_ms": 16.8,
+          "retrieved_docs": [
+            "pubmed:37471273",
+            "cdc:419813",
+            "who:diabetes",
+            "who:dyslipidaemia"
+          ],
+          "complexity": "simple",
+          "precision": 0.25,
+          "recall": 1.0,
+          "hit": 1.0,
+          "rr": 1.0,
+          "returned": 4,
+          "precision_returned": 0.25,
+          "recall_returned": 1.0
+        },
+        {
+          "id": "q06",
+          "type": "definition",
+          "answerable": true,
+          "sufficient": true,
+          "latency_ms": 12.7,
+          "retrieved_docs": [
+            "who:anaemia",
+            "who:anaemia",
+            "pubmed:41525691",
+            "cdc:298494"
+          ],
+          "complexity": "simple",
+          "precision": 0.5,
+          "recall": 1.0,
+          "hit": 1.0,
+          "rr": 1.0,
+          "returned": 4,
+          "precision_returned": 0.5,
+          "recall_returned": 1.0
+        },
+        {
+          "id": "q07",
+          "type": "risk_factors",
+          "answerable": true,
+          "sufficient": true,
+          "latency_ms": 13.0,
+          "retrieved_docs": [
+            "who:anaemia",
+            "who:anaemia",
+            "pubmed:41525691",
+            "cdc:298494"
+          ],
+          "complexity": "simple",
+          "precision": 0.75,
+          "recall": 0.3333333333333333,
+          "hit": 1.0,
+          "rr": 1.0,
+          "returned": 4,
+          "precision_returned": 0.75,
+          "recall_returned": 0.3333333333333333
+        },
+        {
+          "id": "q08",
+          "type": "definition",
+          "answerable": true,
+          "sufficient": true,
+          "latency_ms": 12.1,
+          "retrieved_docs": [
+            "cdc:416309",
+            "cdc:416309",
+            "cdc:734962",
+            "cdc:335185"
+          ],
+          "complexity": "simple",
+          "precision": 0.75,
+          "recall": 0.6666666666666666,
+          "hit": 1.0,
+          "rr": 1.0,
+          "returned": 4,
+          "precision_returned": 0.75,
+          "recall_returned": 0.6666666666666666
+        },
+        {
+          "id": "q09",
+          "type": "risk_factors",
+          "answerable": true,
+          "sufficient": true,
+          "latency_ms": 12.2,
+          "retrieved_docs": [
+            "cdc:281796",
+            "cdc:419813",
+            "who:diabetes",
+            "cdc:281798"
+          ],
+          "complexity": "simple",
+          "precision": 0.5,
+          "recall": 0.4,
+          "hit": 1.0,
+          "rr": 0.3333333333333333,
+          "returned": 4,
+          "precision_returned": 0.5,
+          "recall_returned": 0.4
+        },
+        {
+          "id": "q10",
+          "type": "definition",
+          "answerable": true,
+          "sufficient": true,
+          "latency_ms": 12.1,
+          "retrieved_docs": [
+            "who:kidney-disease",
+            "who:kidney-disease",
+            "pubmed:41314225",
+            "pubmed:31573641"
+          ],
+          "complexity": "simple",
+          "precision": 1.0,
+          "recall": 0.375,
+          "hit": 1.0,
+          "rr": 1.0,
+          "returned": 4,
+          "precision_returned": 1.0,
+          "recall_returned": 0.375
+        },
+        {
+          "id": "q11",
+          "type": "symptoms",
+          "answerable": true,
+          "sufficient": true,
+          "latency_ms": 12.6,
+          "retrieved_docs": [
+            "cdc:125431",
+            "cdc:125431",
+            "who:cardiovascular-diseases-(cvds)",
+            "who:dyslipidaemia"
+          ],
+          "complexity": "simple",
+          "precision": 0.5,
+          "recall": 0.25,
+          "hit": 1.0,
+          "rr": 1.0,
+          "returned": 4,
+          "precision_returned": 0.5,
+          "recall_returned": 0.25
+        },
+        {
+          "id": "q12",
+          "type": "symptoms",
+          "answerable": true,
+          "sufficient": true,
+          "latency_ms": 9.2,
+          "retrieved_docs": [
+            "who:heart-attack",
+            "who:cardiovascular-diseases-(cvds)",
+            "who:heart-attack",
+            "who:cardiovascular-diseases-(cvds)"
+          ],
+          "complexity": "simple",
+          "precision": 1.0,
+          "recall": 1.0,
+          "hit": 1.0,
+          "rr": 1.0,
+          "returned": 4,
+          "precision_returned": 1.0,
+          "recall_returned": 1.0
+        },
+        {
+          "id": "q13",
+          "type": "lifestyle",
+          "answerable": true,
+          "sufficient": true,
+          "latency_ms": 12.8,
+          "retrieved_docs": [
+            "who:physical-activity",
+            "who:physical-activity",
+            "cdc:229679",
+            "cdc:762355"
+          ],
+          "complexity": "simple",
+          "precision": 0.5,
+          "recall": 1.0,
+          "hit": 1.0,
+          "rr": 1.0,
+          "returned": 4,
+          "precision_returned": 0.5,
+          "recall_returned": 1.0
+        },
+        {
+          "id": "q14",
+          "type": "threshold",
+          "answerable": true,
+          "sufficient": true,
+          "latency_ms": 13.3,
+          "retrieved_docs": [
+            "who:obesity-and-overweight",
+            "who:malnutrition",
+            "cdc:759627",
+            "cdc:126386"
+          ],
+          "complexity": "simple",
+          "precision": 0.25,
+          "recall": 0.5,
+          "hit": 1.0,
+          "rr": 1.0,
+          "returned": 4,
+          "precision_returned": 0.25,
+          "recall_returned": 0.5
+        },
+        {
+          "id": "q15",
+          "type": "lifestyle",
+          "answerable": true,
+          "sufficient": true,
+          "latency_ms": 12.5,
+          "retrieved_docs": [
+            "who:healthy-diet",
+            "cdc:222842",
+            "cdc:422954",
+            "cdc:422954"
+          ],
+          "complexity": "simple",
+          "precision": 1.0,
+          "recall": 0.6,
+          "hit": 1.0,
+          "rr": 1.0,
+          "returned": 4,
+          "precision_returned": 1.0,
+          "recall_returned": 0.6
+        },
+        {
+          "id": "q16",
+          "type": "lifestyle",
+          "answerable": true,
+          "sufficient": true,
+          "latency_ms": 13.1,
+          "retrieved_docs": [
+            "who:healthy-diet",
+            "who:healthy-diet",
+            "who:obesity-and-overweight",
+            "cdc:749503"
+          ],
+          "complexity": "simple",
+          "precision": 0.5,
+          "recall": 1.0,
+          "hit": 1.0,
+          "rr": 1.0,
+          "returned": 4,
+          "precision_returned": 0.5,
+          "recall_returned": 1.0
+        },
+        {
+          "id": "q17",
+          "type": "lab_term",
+          "answerable": true,
+          "sufficient": true,
+          "latency_ms": 10.4,
+          "retrieved_docs": [
+            "cdc:298494",
+            "pubmed:40429738",
+            "cdc:744660",
+            "pubmed:38828931"
+          ],
+          "complexity": "simple",
+          "precision": 0.25,
+          "recall": 0.3333333333333333,
+          "hit": 1.0,
+          "rr": 0.25,
+          "returned": 4,
+          "precision_returned": 0.25,
+          "recall_returned": 0.3333333333333333
+        },
+        {
+          "id": "q18",
+          "type": "definition",
+          "answerable": true,
+          "sufficient": true,
+          "latency_ms": 10.9,
+          "retrieved_docs": [
+            "who:diabetes",
+            "who:diabetes",
+            "cdc:335185",
+            "pubmed:35613728"
+          ],
+          "complexity": "simple",
+          "precision": 0.25,
+          "recall": 0.5,
+          "hit": 1.0,
+          "rr": 0.25,
+          "returned": 4,
+          "precision_returned": 0.25,
+          "recall_returned": 0.5
+        },
+        {
+          "id": "q19",
+          "type": "definition",
+          "answerable": true,
+          "sufficient": true,
+          "latency_ms": 11.4,
+          "retrieved_docs": [
+            "who:diabetes",
+            "cdc:419813",
+            "cdc:335185",
+            "who:diabetes"
+          ],
+          "complexity": "simple",
+          "precision": 0.75,
+          "recall": 0.6666666666666666,
+          "hit": 1.0,
+          "rr": 1.0,
+          "returned": 4,
+          "precision_returned": 0.75,
+          "recall_returned": 0.6666666666666666
+        },
+        {
+          "id": "q20",
+          "type": "definition",
+          "answerable": true,
+          "sufficient": true,
+          "latency_ms": 13.7,
+          "retrieved_docs": [
+            "who:cardiovascular-diseases-(cvds)",
+            "who:cardiovascular-diseases-(cvds)",
+            "who:heart-attack",
+            "who:noncommunicable-diseases"
+          ],
+          "complexity": "simple",
+          "precision": 0.75,
+          "recall": 0.6666666666666666,
+          "hit": 1.0,
+          "rr": 1.0,
+          "returned": 4,
+          "precision_returned": 0.75,
+          "recall_returned": 0.6666666666666666
+        },
+        {
+          "id": "q21",
+          "type": "definition",
+          "answerable": true,
+          "sufficient": true,
+          "latency_ms": 19.6,
+          "retrieved_docs": [
+            "who:pre-eclampsia",
+            "who:pre-eclampsia",
+            "pubmed:35066406",
+            "who:diabetes"
+          ],
+          "complexity": "simple",
+          "precision": 0.75,
+          "recall": 1.0,
+          "hit": 1.0,
+          "rr": 1.0,
+          "returned": 4,
+          "precision_returned": 0.75,
+          "recall_returned": 1.0
+        },
+        {
+          "id": "q22",
+          "type": "definition",
+          "answerable": true,
+          "sufficient": true,
+          "latency_ms": 19.0,
+          "retrieved_docs": [
+            "who:dyslipidaemia",
+            "who:dyslipidaemia",
+            "pubmed:37956957",
+            "pubmed:37956957"
+          ],
+          "complexity": "simple",
+          "precision": 1.0,
+          "recall": 0.6666666666666666,
+          "hit": 1.0,
+          "rr": 1.0,
+          "returned": 4,
+          "precision_returned": 1.0,
+          "recall_returned": 0.6666666666666666
+        },
+        {
+          "id": "q23",
+          "type": "lifestyle",
+          "answerable": true,
+          "sufficient": true,
+          "latency_ms": 15.4,
+          "retrieved_docs": [
+            "who:dyslipidaemia",
+            "cdc:229679",
+            "cdc:229679",
+            "who:dyslipidaemia"
+          ],
+          "complexity": "simple",
+          "precision": 1.0,
+          "recall": 1.0,
+          "hit": 1.0,
+          "rr": 1.0,
+          "returned": 4,
+          "precision_returned": 1.0,
+          "recall_returned": 1.0
+        },
+        {
+          "id": "q24",
+          "type": "definition",
+          "answerable": true,
+          "sufficient": true,
+          "latency_ms": 13.9,
+          "retrieved_docs": [
+            "who:depression",
+            "who:depression"
+          ],
+          "complexity": "simple",
+          "precision": 0.5,
+          "recall": 1.0,
+          "hit": 1.0,
+          "rr": 1.0,
+          "returned": 2,
+          "precision_returned": 1.0,
+          "recall_returned": 1.0
+        },
+        {
+          "id": "q25",
+          "type": "multi_part",
+          "answerable": true,
+          "sufficient": true,
+          "latency_ms": 15.2,
+          "retrieved_docs": [
+            "who:diabetes",
+            "who:kidney-disease",
+            "who:diabetes",
+            "who:kidney-disease"
+          ],
+          "complexity": "complex",
+          "precision": 1.0,
+          "recall": 0.3333333333333333,
+          "hit": 1.0,
+          "rr": 1.0,
+          "returned": 4,
+          "precision_returned": 1.0,
+          "recall_returned": 0.3333333333333333
+        },
+        {
+          "id": "q26",
+          "type": "risk_factors",
+          "answerable": true,
+          "sufficient": true,
+          "latency_ms": 12.2,
+          "retrieved_docs": [
+            "cdc:418404",
+            "cdc:418404",
+            "cdc:401646",
+            "cdc:745685"
+          ],
+          "complexity": "simple",
+          "precision": 0.5,
+          "recall": 0.5,
+          "hit": 1.0,
+          "rr": 1.0,
+          "returned": 4,
+          "precision_returned": 0.5,
+          "recall_returned": 0.5
+        },
+        {
+          "id": "q27",
+          "type": "lab_term",
+          "answerable": true,
+          "sufficient": true,
+          "latency_ms": 13.3,
+          "retrieved_docs": [
+            "who:kidney-disease",
+            "who:kidney-disease",
+            "pubmed:31573641",
+            "pubmed:40921075"
+          ],
+          "complexity": "simple",
+          "precision": 0.75,
+          "recall": 1.0,
+          "hit": 1.0,
+          "rr": 1.0,
+          "returned": 4,
+          "precision_returned": 0.75,
+          "recall_returned": 1.0
+        },
+        {
+          "id": "q28",
+          "type": "multi_part",
+          "answerable": true,
+          "sufficient": true,
+          "latency_ms": 14.3,
+          "retrieved_docs": [
+            "who:noncommunicable-diseases",
+            "who:malnutrition",
+            "who:oral-health",
+            "who:noncommunicable-diseases"
+          ],
+          "complexity": "simple",
+          "precision": 0.5,
+          "recall": 1.0,
+          "hit": 1.0,
+          "rr": 1.0,
+          "returned": 4,
+          "precision_returned": 0.5,
+          "recall_returned": 1.0
+        },
+        {
+          "id": "q29",
+          "type": "multi_part",
+          "answerable": true,
+          "sufficient": true,
+          "latency_ms": 14.9,
+          "retrieved_docs": [
+            "who:diabetes",
+            "who:diabetes",
+            "cdc:281798",
+            "who:dyslipidaemia"
+          ],
+          "complexity": "complex",
+          "precision": 0.5,
+          "recall": 0.25,
+          "hit": 1.0,
+          "rr": 1.0,
+          "returned": 4,
+          "precision_returned": 0.5,
+          "recall_returned": 0.25
+        },
+        {
+          "id": "q30",
+          "type": "comparison",
+          "answerable": true,
+          "sufficient": true,
+          "latency_ms": 14.4,
+          "retrieved_docs": [
+            "who:diabetes",
+            "who:diabetes",
+            "cdc:281798",
+            "cdc:281796"
+          ],
+          "complexity": "complex",
+          "precision": 0.75,
+          "recall": 0.3333333333333333,
+          "hit": 1.0,
+          "rr": 1.0,
+          "returned": 4,
+          "precision_returned": 0.75,
+          "recall_returned": 0.3333333333333333
+        },
+        {
+          "id": "u01",
+          "type": "unanswerable",
+          "answerable": false,
+          "sufficient": false,
+          "latency_ms": 12.8,
+          "retrieved_docs": [],
+          "complexity": "simple"
+        },
+        {
+          "id": "u02",
+          "type": "unanswerable",
+          "answerable": false,
+          "sufficient": false,
+          "latency_ms": 12.4,
+          "retrieved_docs": [],
+          "complexity": "simple"
+        },
+        {
+          "id": "u03",
+          "type": "unanswerable",
+          "answerable": false,
+          "sufficient": false,
+          "latency_ms": 12.5,
+          "retrieved_docs": [],
+          "complexity": "simple"
+        },
+        {
+          "id": "u04",
+          "type": "unanswerable_medical",
+          "answerable": false,
+          "sufficient": true,
+          "latency_ms": 10.9,
+          "retrieved_docs": [
+            "cdc:760024"
+          ],
+          "complexity": "simple"
+        },
+        {
+          "id": "u05",
+          "type": "unanswerable",
+          "answerable": false,
+          "sufficient": false,
+          "latency_ms": 12.8,
+          "retrieved_docs": [],
+          "complexity": "simple"
+        }
+      ]
+    },
+    "adaptive": {
+      "retrieval": {
+        "precision@4": 0.6583,
+        "recall@4": 0.6814,
+        "hit@4": 1.0,
+        "mrr": 0.9278,
+        "avg_passages_returned": 4.3667,
+        "precision@returned": 0.645,
+        "recall@returned": 0.6925,
+        "abstention_accuracy_unanswerable": 0.8,
+        "false_abstention_rate_answerable": 0.0,
+        "median_latency_ms": 12.6
+      },
+      "generation": {
+        "measured": false,
+        "reason": "No LLM configured (GEMINI_API_KEY unset) - generation metrics were not computed."
+      },
+      "by_type": {
+        "comparison": 0.5,
+        "definition": 0.722,
+        "lab_term": 0.7778,
+        "lifestyle": 0.9,
+        "multi_part": 0.5278,
+        "risk_factors": 0.4111,
+        "symptoms": 0.625,
+        "threshold": 0.75
+      },
+      "questions": [
+        {
+          "id": "q01",
+          "type": "definition",
+          "answerable": true,
+          "sufficient": true,
+          "latency_ms": 11.7,
+          "retrieved_docs": [
+            "who:diabetes",
+            "cdc:335185",
+            "cdc:419813",
+            "cdc:335185"
+          ],
+          "complexity": "simple",
+          "precision": 0.75,
+          "recall": 1.0,
+          "hit": 1.0,
+          "rr": 1.0,
+          "returned": 4,
+          "precision_returned": 0.75,
+          "recall_returned": 1.0
+        },
+        {
+          "id": "q02",
+          "type": "comparison",
+          "answerable": true,
+          "sufficient": true,
+          "latency_ms": 43.1,
+          "retrieved_docs": [
+            "who:dyslipidaemia",
+            "who:dyslipidaemia",
+            "pubmed:33471744",
+            "pubmed:39043480",
+            "pubmed:31071007"
+          ],
+          "complexity": "complex",
+          "precision": 0.75,
+          "recall": 0.6666666666666666,
+          "hit": 1.0,
+          "rr": 1.0,
+          "returned": 5,
+          "precision_returned": 0.6,
+          "recall_returned": 0.6666666666666666
+        },
+        {
+          "id": "q03",
+          "type": "definition",
+          "answerable": true,
+          "sufficient": true,
+          "latency_ms": 11.5,
+          "retrieved_docs": [
+            "cdc:229514",
+            "who:hypertension",
+            "cdc:229514",
+            "who:hypertension"
+          ],
+          "complexity": "simple",
+          "precision": 1.0,
+          "recall": 0.4,
+          "hit": 1.0,
+          "rr": 1.0,
+          "returned": 4,
+          "precision_returned": 1.0,
+          "recall_returned": 0.4
+        },
+        {
+          "id": "q04",
+          "type": "threshold",
+          "answerable": true,
+          "sufficient": true,
+          "latency_ms": 11.7,
+          "retrieved_docs": [
+            "who:hypertension",
+            "cdc:229514",
+            "who:hypertension",
+            "cdc:229514"
+          ],
+          "complexity": "simple",
+          "precision": 0.5,
+          "recall": 1.0,
+          "hit": 1.0,
+          "rr": 1.0,
+          "returned": 4,
+          "precision_returned": 0.5,
+          "recall_returned": 1.0
+        },
+        {
+          "id": "q05",
+          "type": "lab_term",
+          "answerable": true,
+          "sufficient": true,
+          "latency_ms": 16.2,
+          "retrieved_docs": [
+            "pubmed:37471273",
+            "cdc:419813",
+            "who:diabetes",
+            "who:dyslipidaemia"
+          ],
+          "complexity": "simple",
+          "precision": 0.25,
+          "recall": 1.0,
+          "hit": 1.0,
+          "rr": 1.0,
+          "returned": 4,
+          "precision_returned": 0.25,
+          "recall_returned": 1.0
+        },
+        {
+          "id": "q06",
+          "type": "definition",
+          "answerable": true,
+          "sufficient": true,
+          "latency_ms": 12.3,
+          "retrieved_docs": [
+            "who:anaemia",
+            "who:anaemia",
+            "pubmed:41525691",
+            "cdc:298494"
+          ],
+          "complexity": "simple",
+          "precision": 0.5,
+          "recall": 1.0,
+          "hit": 1.0,
+          "rr": 1.0,
+          "returned": 4,
+          "precision_returned": 0.5,
+          "recall_returned": 1.0
+        },
+        {
+          "id": "q07",
+          "type": "risk_factors",
+          "answerable": true,
+          "sufficient": true,
+          "latency_ms": 13.0,
+          "retrieved_docs": [
+            "who:anaemia",
+            "who:anaemia",
+            "pubmed:41525691",
+            "cdc:298494"
+          ],
+          "complexity": "simple",
+          "precision": 0.75,
+          "recall": 0.3333333333333333,
+          "hit": 1.0,
+          "rr": 1.0,
+          "returned": 4,
+          "precision_returned": 0.75,
+          "recall_returned": 0.3333333333333333
+        },
+        {
+          "id": "q08",
+          "type": "definition",
+          "answerable": true,
+          "sufficient": true,
+          "latency_ms": 12.1,
+          "retrieved_docs": [
+            "cdc:416309",
+            "cdc:416309",
+            "cdc:734962",
+            "cdc:335185"
+          ],
+          "complexity": "simple",
+          "precision": 0.75,
+          "recall": 0.6666666666666666,
+          "hit": 1.0,
+          "rr": 1.0,
+          "returned": 4,
+          "precision_returned": 0.75,
+          "recall_returned": 0.6666666666666666
+        },
+        {
+          "id": "q09",
+          "type": "risk_factors",
+          "answerable": true,
+          "sufficient": true,
+          "latency_ms": 17.5,
+          "retrieved_docs": [
+            "cdc:281796",
+            "cdc:419813",
+            "who:diabetes",
+            "cdc:281798"
+          ],
+          "complexity": "simple",
+          "precision": 0.5,
+          "recall": 0.4,
+          "hit": 1.0,
+          "rr": 0.3333333333333333,
+          "returned": 4,
+          "precision_returned": 0.5,
+          "recall_returned": 0.4
+        },
+        {
+          "id": "q10",
+          "type": "definition",
+          "answerable": true,
+          "sufficient": true,
+          "latency_ms": 13.8,
+          "retrieved_docs": [
+            "who:kidney-disease",
+            "who:kidney-disease",
+            "pubmed:41314225",
+            "pubmed:31573641"
+          ],
+          "complexity": "simple",
+          "precision": 1.0,
+          "recall": 0.375,
+          "hit": 1.0,
+          "rr": 1.0,
+          "returned": 4,
+          "precision_returned": 1.0,
+          "recall_returned": 0.375
+        },
+        {
+          "id": "q11",
+          "type": "symptoms",
+          "answerable": true,
+          "sufficient": true,
+          "latency_ms": 11.6,
+          "retrieved_docs": [
+            "cdc:125431",
+            "cdc:125431",
+            "who:cardiovascular-diseases-(cvds)",
+            "who:dyslipidaemia"
+          ],
+          "complexity": "simple",
+          "precision": 0.5,
+          "recall": 0.25,
+          "hit": 1.0,
+          "rr": 1.0,
+          "returned": 4,
+          "precision_returned": 0.5,
+          "recall_returned": 0.25
+        },
+        {
+          "id": "q12",
+          "type": "symptoms",
+          "answerable": true,
+          "sufficient": true,
+          "latency_ms": 12.2,
+          "retrieved_docs": [
+            "who:heart-attack",
+            "who:cardiovascular-diseases-(cvds)",
+            "who:heart-attack",
+            "who:cardiovascular-diseases-(cvds)"
+          ],
+          "complexity": "simple",
+          "precision": 1.0,
+          "recall": 1.0,
+          "hit": 1.0,
+          "rr": 1.0,
+          "returned": 4,
+          "precision_returned": 1.0,
+          "recall_returned": 1.0
+        },
+        {
+          "id": "q13",
+          "type": "lifestyle",
+          "answerable": true,
+          "sufficient": true,
+          "latency_ms": 13.3,
+          "retrieved_docs": [
+            "who:physical-activity",
+            "who:physical-activity",
+            "cdc:229679",
+            "cdc:762355"
+          ],
+          "complexity": "simple",
+          "precision": 0.5,
+          "recall": 1.0,
+          "hit": 1.0,
+          "rr": 1.0,
+          "returned": 4,
+          "precision_returned": 0.5,
+          "recall_returned": 1.0
+        },
+        {
+          "id": "q14",
+          "type": "threshold",
+          "answerable": true,
+          "sufficient": true,
+          "latency_ms": 12.3,
+          "retrieved_docs": [
+            "who:obesity-and-overweight",
+            "who:malnutrition",
+            "cdc:759627",
+            "cdc:126386"
+          ],
+          "complexity": "simple",
+          "precision": 0.25,
+          "recall": 0.5,
+          "hit": 1.0,
+          "rr": 1.0,
+          "returned": 4,
+          "precision_returned": 0.25,
+          "recall_returned": 0.5
+        },
+        {
+          "id": "q15",
+          "type": "lifestyle",
+          "answerable": true,
+          "sufficient": true,
+          "latency_ms": 9.3,
+          "retrieved_docs": [
+            "who:healthy-diet",
+            "cdc:222842",
+            "cdc:422954",
+            "cdc:422954"
+          ],
+          "complexity": "simple",
+          "precision": 1.0,
+          "recall": 0.6,
+          "hit": 1.0,
+          "rr": 1.0,
+          "returned": 4,
+          "precision_returned": 1.0,
+          "recall_returned": 0.6
+        },
+        {
+          "id": "q16",
+          "type": "lifestyle",
+          "answerable": true,
+          "sufficient": true,
+          "latency_ms": 13.7,
+          "retrieved_docs": [
+            "who:healthy-diet",
+            "who:healthy-diet",
+            "who:obesity-and-overweight",
+            "cdc:749503"
+          ],
+          "complexity": "simple",
+          "precision": 0.5,
+          "recall": 1.0,
+          "hit": 1.0,
+          "rr": 1.0,
+          "returned": 4,
+          "precision_returned": 0.5,
+          "recall_returned": 1.0
+        },
+        {
+          "id": "q17",
+          "type": "lab_term",
+          "answerable": true,
+          "sufficient": true,
+          "latency_ms": 14.4,
+          "retrieved_docs": [
+            "cdc:298494",
+            "pubmed:40429738",
+            "cdc:744660",
+            "pubmed:38828931"
+          ],
+          "complexity": "simple",
+          "precision": 0.25,
+          "recall": 0.3333333333333333,
+          "hit": 1.0,
+          "rr": 0.25,
+          "returned": 4,
+          "precision_returned": 0.25,
+          "recall_returned": 0.3333333333333333
+        },
+        {
+          "id": "q18",
+          "type": "definition",
+          "answerable": true,
+          "sufficient": true,
+          "latency_ms": 12.0,
+          "retrieved_docs": [
+            "who:diabetes",
+            "who:diabetes",
+            "cdc:335185",
+            "pubmed:35613728"
+          ],
+          "complexity": "simple",
+          "precision": 0.25,
+          "recall": 0.5,
+          "hit": 1.0,
+          "rr": 0.25,
+          "returned": 4,
+          "precision_returned": 0.25,
+          "recall_returned": 0.5
+        },
+        {
+          "id": "q19",
+          "type": "definition",
+          "answerable": true,
+          "sufficient": true,
+          "latency_ms": 9.3,
+          "retrieved_docs": [
+            "who:diabetes",
+            "cdc:419813",
+            "cdc:335185",
+            "who:diabetes"
+          ],
+          "complexity": "simple",
+          "precision": 0.75,
+          "recall": 0.6666666666666666,
+          "hit": 1.0,
+          "rr": 1.0,
+          "returned": 4,
+          "precision_returned": 0.75,
+          "recall_returned": 0.6666666666666666
+        },
+        {
+          "id": "q20",
+          "type": "definition",
+          "answerable": true,
+          "sufficient": true,
+          "latency_ms": 10.8,
+          "retrieved_docs": [
+            "who:cardiovascular-diseases-(cvds)",
+            "who:cardiovascular-diseases-(cvds)",
+            "who:heart-attack",
+            "who:noncommunicable-diseases"
+          ],
+          "complexity": "simple",
+          "precision": 0.75,
+          "recall": 0.6666666666666666,
+          "hit": 1.0,
+          "rr": 1.0,
+          "returned": 4,
+          "precision_returned": 0.75,
+          "recall_returned": 0.6666666666666666
+        },
+        {
+          "id": "q21",
+          "type": "definition",
+          "answerable": true,
+          "sufficient": true,
+          "latency_ms": 11.9,
+          "retrieved_docs": [
+            "who:pre-eclampsia",
+            "who:pre-eclampsia",
+            "pubmed:35066406",
+            "who:diabetes"
+          ],
+          "complexity": "simple",
+          "precision": 0.75,
+          "recall": 1.0,
+          "hit": 1.0,
+          "rr": 1.0,
+          "returned": 4,
+          "precision_returned": 0.75,
+          "recall_returned": 1.0
+        },
+        {
+          "id": "q22",
+          "type": "definition",
+          "answerable": true,
+          "sufficient": true,
+          "latency_ms": 11.8,
+          "retrieved_docs": [
+            "who:dyslipidaemia",
+            "who:dyslipidaemia",
+            "pubmed:37956957",
+            "pubmed:37956957"
+          ],
+          "complexity": "simple",
+          "precision": 1.0,
+          "recall": 0.6666666666666666,
+          "hit": 1.0,
+          "rr": 1.0,
+          "returned": 4,
+          "precision_returned": 1.0,
+          "recall_returned": 0.6666666666666666
+        },
+        {
+          "id": "q23",
+          "type": "lifestyle",
+          "answerable": true,
+          "sufficient": true,
+          "latency_ms": 12.9,
+          "retrieved_docs": [
+            "who:dyslipidaemia",
+            "cdc:229679",
+            "cdc:229679",
+            "who:dyslipidaemia"
+          ],
+          "complexity": "simple",
+          "precision": 1.0,
+          "recall": 1.0,
+          "hit": 1.0,
+          "rr": 1.0,
+          "returned": 4,
+          "precision_returned": 1.0,
+          "recall_returned": 1.0
+        },
+        {
+          "id": "q24",
+          "type": "definition",
+          "answerable": true,
+          "sufficient": true,
+          "latency_ms": 12.7,
+          "retrieved_docs": [
+            "who:depression",
+            "who:depression"
+          ],
+          "complexity": "simple",
+          "precision": 0.5,
+          "recall": 1.0,
+          "hit": 1.0,
+          "rr": 1.0,
+          "returned": 2,
+          "precision_returned": 1.0,
+          "recall_returned": 1.0
+        },
+        {
+          "id": "q25",
+          "type": "multi_part",
+          "answerable": true,
+          "sufficient": true,
+          "latency_ms": 58.3,
+          "retrieved_docs": [
+            "who:kidney-disease",
+            "who:diabetes",
+            "who:kidney-disease",
+            "cdc:335185",
+            "who:diabetes",
+            "cdc:422954",
+            "who:hypertension",
+            "cdc:335185"
+          ],
+          "complexity": "complex",
+          "precision": 0.75,
+          "recall": 0.3333333333333333,
+          "hit": 1.0,
+          "rr": 1.0,
+          "returned": 8,
+          "precision_returned": 0.5,
+          "recall_returned": 0.3333333333333333
+        },
+        {
+          "id": "q26",
+          "type": "risk_factors",
+          "answerable": true,
+          "sufficient": true,
+          "latency_ms": 10.6,
+          "retrieved_docs": [
+            "cdc:418404",
+            "cdc:418404",
+            "cdc:401646",
+            "cdc:745685"
+          ],
+          "complexity": "simple",
+          "precision": 0.5,
+          "recall": 0.5,
+          "hit": 1.0,
+          "rr": 1.0,
+          "returned": 4,
+          "precision_returned": 0.5,
+          "recall_returned": 0.5
+        },
+        {
+          "id": "q27",
+          "type": "lab_term",
+          "answerable": true,
+          "sufficient": true,
+          "latency_ms": 17.4,
+          "retrieved_docs": [
+            "who:kidney-disease",
+            "who:kidney-disease",
+            "pubmed:31573641",
+            "pubmed:40921075"
+          ],
+          "complexity": "simple",
+          "precision": 0.75,
+          "recall": 1.0,
+          "hit": 1.0,
+          "rr": 1.0,
+          "returned": 4,
+          "precision_returned": 0.75,
+          "recall_returned": 1.0
+        },
+        {
+          "id": "q28",
+          "type": "multi_part",
+          "answerable": true,
+          "sufficient": true,
+          "latency_ms": 15.4,
+          "retrieved_docs": [
+            "who:noncommunicable-diseases",
+            "who:malnutrition",
+            "who:oral-health",
+            "who:noncommunicable-diseases"
+          ],
+          "complexity": "simple",
+          "precision": 0.5,
+          "recall": 1.0,
+          "hit": 1.0,
+          "rr": 1.0,
+          "returned": 4,
+          "precision_returned": 0.5,
+          "recall_returned": 1.0
+        },
+        {
+          "id": "q29",
+          "type": "multi_part",
+          "answerable": true,
+          "sufficient": true,
+          "latency_ms": 33.5,
+          "retrieved_docs": [
+            "who:diabetes",
+            "who:diabetes",
+            "cdc:281798",
+            "who:dyslipidaemia",
+            "who:heart-attack",
+            "cdc:742900",
+            "who:heart-attack",
+            "who:hypertension"
+          ],
+          "complexity": "complex",
+          "precision": 0.5,
+          "recall": 0.25,
+          "hit": 1.0,
+          "rr": 1.0,
+          "returned": 8,
+          "precision_returned": 0.25,
+          "recall_returned": 0.25
+        },
+        {
+          "id": "q30",
+          "type": "comparison",
+          "answerable": true,
+          "sufficient": true,
+          "latency_ms": 40.3,
+          "retrieved_docs": [
+            "who:diabetes",
+            "who:diabetes",
+            "who:physical-activity",
+            "who:physical-activity",
+            "cdc:281798",
+            "cdc:281796",
+            "cdc:335185",
+            "cdc:762355"
+          ],
+          "complexity": "complex",
+          "precision": 1.0,
+          "recall": 0.3333333333333333,
+          "hit": 1.0,
+          "rr": 1.0,
+          "returned": 8,
+          "precision_returned": 0.75,
+          "recall_returned": 0.6666666666666666
+        },
+        {
+          "id": "u01",
+          "type": "unanswerable",
+          "answerable": false,
+          "sufficient": false,
+          "latency_ms": 13.7,
+          "retrieved_docs": [],
+          "complexity": "simple"
+        },
+        {
+          "id": "u02",
+          "type": "unanswerable",
+          "answerable": false,
+          "sufficient": false,
+          "latency_ms": 10.9,
+          "retrieved_docs": [],
+          "complexity": "simple"
+        },
+        {
+          "id": "u03",
+          "type": "unanswerable",
+          "answerable": false,
+          "sufficient": false,
+          "latency_ms": 11.7,
+          "retrieved_docs": [],
+          "complexity": "simple"
+        },
+        {
+          "id": "u04",
+          "type": "unanswerable_medical",
+          "answerable": false,
+          "sufficient": true,
+          "latency_ms": 12.6,
+          "retrieved_docs": [
+            "cdc:760024"
+          ],
+          "complexity": "simple"
+        },
+        {
+          "id": "u05",
+          "type": "unanswerable",
+          "answerable": false,
+          "sufficient": false,
+          "latency_ms": 12.6,
+          "retrieved_docs": [],
+          "complexity": "simple"
+        }
+      ]
+    }
+  },
+  "caveats": [
+    "Relevance labels are document-level and were assigned by the project author; a single annotator, no inter-rater agreement.",
+    "The benchmark is small (30 answerable + 5 unanswerable questions); differences of a few points are within noise.",
+    "Faithfulness uses the same heuristic verifier as the app; it measures resemblance to sources, not medical correctness.",
+    "No hallucination rate is claimed beyond what these measurements show."
+  ]
+}
